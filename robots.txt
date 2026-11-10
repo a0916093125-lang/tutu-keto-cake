@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tutu888.com.tw/sitemap.xml
