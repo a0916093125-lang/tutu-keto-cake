@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-<head
+<head>
   <!-- Google tag (gtag.js) -->
-  <script async src="httpws://ww .googletagmanager .com/gtag/js?id=G-X0ZXVGSSNH"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X0ZXVGSSNH"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-X0ZXVGSSNH');
-  </script>>
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>圖圖生酮蛋糕店｜台南無麩質低醣甜點・41款6吋價格菜單＆黑貓宅配預約官網</title>
@@ -1036,16 +1035,7 @@
       // 0. GA4 KEY EVENTS TRACKING HOOK (填入 G-XXXXXXXXXX 即自動啟用)
       // -------------------------------------------------------------------
       var GA4_MEASUREMENT_ID = 'G-X0ZXVGSSNH';
-      if (!window.gtag && GA4_MEASUREMENT_ID && /^G-[A-Z0-9]+$/i.test(GA4_MEASUREMENT_ID)) {
-        var gs = document.createElement('script');
-        gs.async = true;
-        gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_MEASUREMENT_ID;
-        document.head.appendChild(gs);
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function () { window.dataLayer.push(arguments); };
-        window.gtag('js', new Date());
-        window.gtag('config', GA4_MEASUREMENT_ID);
-      }
+      // gtag('config', 'G-X0ZXVGSSNH') initialized in <head>
       function trackGAEvent(eventName, params) {
         try {
           if (typeof window.gtag === 'function') {
@@ -1557,7 +1547,19 @@
       window.addEventListener('resize', function () {
         if (window.innerWidth !== lastWidth) {
           lastWidth = window.innerWidth;
-          resizeParticleCanvas();
+          // Wire LINE & Phone click events for GA4
+      Array.prototype.slice.call(document.querySelectorAll('a[href*="openchat.line.me"]')).forEach(function (a) {
+        a.addEventListener('click', function () {
+          trackGAEvent('click_line_community', { destination: 'line_openchat' });
+        });
+      });
+      Array.prototype.slice.call(document.querySelectorAll('a[href^="tel:"]')).forEach(function (a) {
+        a.addEventListener('click', function () {
+          trackGAEvent('click_phone_call', { phone: '0933-242-093' });
+        });
+      });
+
+      resizeParticleCanvas();
         }
       });
 
