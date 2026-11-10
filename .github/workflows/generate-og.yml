@@ -1,0 +1,25 @@
+name: Generate OG Cover
+
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: write
+
+jobs:
+  generate-og:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate og-cover.jpg
+        run: |
+          if [ ! -f og-cover.jpg ]; then
+            python3 -m pip install pillow
+            python3 -c "from PIL import Image, ImageDraw; img = Image.new('RGB', (1200, 630), color=(20, 17, 15)); draw = ImageDraw.Draw(img); draw.rectangle([12, 12, 1188, 618], outline=(255, 191, 0), width=12); draw.text((100, 300), 'TUTU KETO BAKERY | TAINAN · 100% GLUTEN-FREE KETO CAKES · tutu888.com.tw', fill=(255, 255, 255)); img.save('og-cover.jpg', 'JPEG', quality=95)"
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add og-cover.jpg
+            git commit -m "Auto generate og-cover.jpg"
+            git push
+          fi
