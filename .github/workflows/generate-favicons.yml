@@ -1,0 +1,90 @@
+name: Generate Favicons
+
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: write
+
+jobs:
+  generate-favicons:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Pillow
+        run: pip install Pillow
+
+      - name: Generate favicons and push
+        run: |
+          if [ ! -f favicon.ico ]; then
+            python - << 'EOF'
+          import math
+          from PIL import Image, ImageDraw
+
+          S = 1024
+          img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+          draw = ImageDraw.Draw(img)
+
+          bg_color = (0x14, 0x11, 0x0F, 255)
+          gold_color = (0xE6, 0xB3, 0x5A, 255)
+          custard_color = (0xF5, 0xD2, 0x8C, 255)
+          caramel_color = (0x5C, 0x2A, 0x14, 255)
+          blueberry_color = (0x33, 0x46, 0x7A, 255)
+          highlight_color = (0x88, 0xB0, 0xF5, 255)
+          mint_color = (0x6F, 0xC2, 0x76, 255)
+
+          cx, cy = S // 2, S // 2
+          r = 460
+
+          draw.ellipse([cx - r, cy - r, cx + r, cy + r], fill=bg_color)
+          draw.ellipse([cx - r, cy - r, cx + r, cy + r], outline=gold_color, width=20)
+          r_inner = r - 36
+          draw.ellipse([cx - r_inner, cy - r_inner, cx + r_inner, cy + r_inner], outline=gold_color, width=10)
+
+          draw.polygon([(512, 380), (280, 660), (280, 720), (512, 450)], fill=custard_color)
+          draw.polygon([(512, 380), (744, 660), (744, 720), (512, 450)], fill=(0xEC, 0xC5, 0x7E, 255))
+          draw.polygon([(280, 660), (744, 660), (744, 720), (280, 720)], fill=custard_color)
+
+          draw.polygon([(512, 380), (280, 660), (744, 660)], fill=caramel_color)
+
+          draw.ellipse([512 - 45, 470 - 35, 512 + 45, 470 + 35], fill=gold_color)
+          draw.ellipse([512 - 25, 465 - 25, 512 + 25, 465 + 25], fill=(0xFF, 0xDF, 0x90, 255))
+
+          bb_x, bb_y, bb_r = 460, 450, 32
+          draw.ellipse([bb_x - bb_r, bb_y - bb_r, bb_x + bb_r, bb_y + bb_r], fill=blueberry_color)
+          draw.ellipse([bb_x - 14, bb_y - 14, bb_x - 4, bb_y - 4], fill=highlight_color)
+
+          draw.polygon([(540, 450), (600, 410), (585, 460), (530, 460)], fill=mint_color)
+          draw.line([(540, 450), (590, 420)], fill=(0x4E, 0x98, 0x54, 255), width=4)
+
+          img.resize((512, 512), Image.Resampling.LANCZOS).save("logo-512.png")
+          img.resize((192, 192), Image.Resampling.LANCZOS).save("favicon-192.png")
+
+          img_180 = img.resize((180, 180), Image.Resampling.LANCZOS)
+          apple_bg = Image.new("RGBA", (180, 180), bg_color)
+          apple_bg.alpha_composite(img_180)
+          apple_bg.save("apple-touch-icon.png")
+
+          img.resize((96, 96), Image.Resampling.LANCZOS).save("favicon-96.png")
+
+          img_96 = img.resize((96, 96), Image.Resampling.LANCZOS)
+          img_48 = img.resize((48, 48), Image.Resampling.LANCZOS)
+          img_96.save("favicon.ico", format="ICO", sizes=[(48, 48), (96, 96)])
+
+          print("Favicons generated successfully!")
+          EOF
+
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add favicon.ico favicon-96.png favicon-192.png apple-touch-icon.png logo-512.png
+            git commit -m "chore: generate favicons"
+            git push
+          else
+            echo "favicon.ico already exists, skipping generation."
+          fi
