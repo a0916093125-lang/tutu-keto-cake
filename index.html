@@ -252,7 +252,10 @@
     }
 
     .rail-pill {
-      min-height: 40px;
+      min-height: 44px;
+      height: 44px;
+      min-width: 44px;
+      box-sizing: border-box;
       transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -337,6 +340,81 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+    }
+
+    /* Single-line controls: height, not only min-height, so the box stays >= 44px. */
+    #btn-auto-flight,
+    #btn-prev-scene,
+    #btn-next-scene,
+    #btn-copy-address,
+    #btn-copy-bank,
+    #btn-copy-inquiry,
+    #btn-reset-filter,
+    header a[href="#menu-section"],
+    header a[href="#top"],
+    .rail-pill,
+    body > div.sticky a[href^="#chapter-"],
+    .craft-tab,
+    .fulfill-btn,
+    .persona-btn,
+    .cat-btn,
+    [data-persona-add],
+    #chapter-04 a[target="_blank"],
+    #booking-section a[href^="http"],
+    #booking-section a[href^="tel:"],
+    footer a[href="#top"] {
+      box-sizing: border-box;
+      min-width: 44px;
+      min-height: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    header a[href="#top"] {
+      height: max(44px, fit-content);
+      flex-shrink: 1;
+    }
+
+    /* Scene camera scales pins to about 0.9; 50px CSS keeps the visual box >= 44px. */
+    .hotspot-pin {
+      box-sizing: border-box;
+      min-width: 44px;
+      min-height: 50px;
+      height: 50px;
+    }
+
+    #story-deep-link,
+    footer a {
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      height: 44px;
+    }
+
+    /* Narrow header: wrap the brand cluster so the shop name is not clipped. */
+    @media (max-width: 479px) {
+      header > .max-w-7xl > .glass-panel {
+        flex-wrap: wrap;
+        align-items: center;
+        row-gap: 8px;
+      }
+      header > .max-w-7xl > .glass-panel > a[href="#top"] {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+      header > .max-w-7xl > .glass-panel > a[href="#top"] .truncate {
+        overflow: visible;
+        text-overflow: unset;
+        white-space: normal;
+      }
+      header > .max-w-7xl > .glass-panel > div {
+        flex-wrap: wrap;
+        max-width: 100%;
+      }
     }
 
     /* N4: keep the static summary in the DOM for no-JS readers and crawlers. */
