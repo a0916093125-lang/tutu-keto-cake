@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://tutu888.com.tw/</loc>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://tutu888.com.tw/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://tutu888.com.tw/og-cover.jpg</image:loc>
+      <image:title>圖圖生酮蛋糕店｜台南無麩質無精製糖手作甜點預約官網</image:title>
+      <image:caption>台南仁德手作 18 大系列 41 款六吋生酮乳酪、巴斯克、千層蛋糕與黑貓滿 2,000 免運預約官網</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://tutu888.com.tw/assets/scene-01-keto-ingredients.webp</image:loc>
+      <image:title>01 純淨無麩質食材：美國馬卡龍杏仁粉、法國奶油乳酪與羅漢果糖</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://tutu888.com.tw/assets/scene-02-artisan-bakery.webp</image:loc>
+      <image:title>02 鮮作工坊：零防腐劑預訂現做巴斯克與手煎千層</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://tutu888.com.tw/assets/scene-03-signature-cakes.webp</image:loc>
+      <image:title>03 招牌無精製糖甜點：41款六吋乳酪、千層、毛巾捲與生乳捲</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://tutu888.com.tw/assets/scene-04-tainan-delivery.webp</image:loc>
+      <image:title>04 台南仁德自取、當日汽車專送與台灣本島黑貓低溫宅配</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://tutu888.com.tw/assets/scene-05-custom-celebration.webp</image:loc>
+      <image:title>05 客製慶生蛋糕：長輩孝親送禮與親子共享無精製糖蛋糕</image:title>
+    </image:image>
+  </url>
 </urlset>

@@ -19,7 +19,13 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+
 User-agent: *
 Allow: /
 
 Sitemap: https://tutu888.com.tw/sitemap.xml
+# AI & Agentic Discovery:
+# LLMs Context: https://tutu888.com.tw/llms.txt
+# UCP Manifest: https://tutu888.com.tw/.well-known/ucp
