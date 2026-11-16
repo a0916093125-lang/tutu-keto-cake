@@ -13,6 +13,9 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
+User-agent: ChatGPT-User
+Allow: /
+
 User-agent: ClaudeBot
 Allow: /
 
@@ -26,6 +29,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://tutu888.com.tw/sitemap.xml
-# AI & Agentic Discovery:
+# AI & Agentic Commerce Discovery:
 # LLMs Context: https://tutu888.com.tw/llms.txt
-# UCP Manifest: https://tutu888.com.tw/.well-known/ucp
+# UCP v1.1 Manifest: https://tutu888.com.tw/.well-known/ucp
+# UCP Mirror JSON: https://tutu888.com.tw/ucp.json
