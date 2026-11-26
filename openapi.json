@@ -1,0 +1,34 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "圖圖公開商品目錄",
+    "version": "1.0.0",
+    "description": "下載公開商品目錄後，依 catalog 的 sku、name、series 篩選。不是即時庫存或下單 API。支援 WebMCP 的瀏覽器可使用 tutu_list_catalog，以 query 或 category 篩選。"
+  },
+  "servers": [
+    {
+      "url": "https://tutu888.com.tw"
+    }
+  ],
+  "paths": {
+    "/ucp.json": {
+      "get": {
+        "operationId": "getCakeCatalog",
+        "summary": "圖圖公開商品目錄",
+        "description": "下載公開商品目錄後，依 catalog 的 sku、name、series 篩選。不是即時庫存或下單 API。支援 WebMCP 的瀏覽器可使用 tutu_list_catalog，以 query 或 category 篩選。",
+        "responses": {
+          "200": {
+            "description": "Public read-only JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -31,5 +31,5 @@ Allow: /
 Sitemap: https://tutu888.com.tw/sitemap.xml
 # AI & Agentic Commerce Discovery:
 # LLMs Context: https://tutu888.com.tw/llms.txt
-# UCP v1.1 Manifest: https://tutu888.com.tw/.well-known/ucp
-# UCP Mirror JSON: https://tutu888.com.tw/ucp.json
+# Read-only agent discovery: https://tutu888.com.tw/openapi.json
+# Public product catalog: https://tutu888.com.tw/ucp.json
